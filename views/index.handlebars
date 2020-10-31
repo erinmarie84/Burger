@@ -1,36 +1,49 @@
-<h1>Eat-Da-Burger</h1>
+<header>
+    <img src="/assets/img/burger.png" class="center" id="burger_img" alt="burger">
+    <h1>Eat-Da-Burger!</h1>
+</header>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col" id="eat">
+      <h2>Burgers to Eat</h2>
+        <ul>
+          {{#each burgers}}
+          {{#unless eaten}}
+            {{> burgers/burger-block}}
+          {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="col">
+      <h2>Eaten Burgers</h2>
+      <ul>
+        {{#each burgers}}
+          {{#if this.eaten}}
+            <ul>
+              {{id}}
+              {{name}}
+            </ul>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+<h2>Add a Burger</h2>
+<form class="create-form" action="/index" method="post">
 
-<div class= 'form'>
-    <form>
-      <label for= 'burger'>Add your favorite burgers</label>
-      <input type= 'text' id= 'burger' name= 'burger'>
-      <br>
-      <button class= 'submit' type= 'submit'>Devour Burger!</button>
-    </form>
-</div>
+    <div class="form-group" id="input">
+        <label for="newBurger"></label>
+        <input type='text' id='newBurger' name='name'>
+    </div>
 
-<div class= 'toeat'>
-  <h2>Burgers to be eaten</h2>
+    <button type="submit" class="btn btn-primary btn-sm" id="submit">Submit</button>
+    <p id="instructions">Enter a burger you want to add and click Submit.</p>
+</form>
 
-  <ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers devoured=falst}}
-    {{/unless}}
-  {{/each}}
-  </ul>
-
-</div>
-
-<div class= 'eaten'>
-  <h2>Devoured!</h2>
-
-  <ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers devoured=true}
-    {{/if}}
-  {{/each}}
-  </ul>
-</div>
+<footer class="footer mt-auto py-3">
+    <div class="container">
+        <span class="text-muted">© 2020 Erin Frasier</span>
+    </div>
+</footer>
 
